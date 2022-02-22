@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  php-fpm:
+    build:
+      context: etc/devel/docker/php-fpm
+    image: app/php-fpm
+    container_name: app.php-fpm
+    volumes:
+      - ".:/app"
+    
+  nginx:
+    build:
+      context: etc/devel/docker/nginx
+    image: app/nginx
+    container_name: app.nginx
+    ports:
+      - 80:80
+
+  redis:
+    build:
+      context: etc/devel/docker/redis
+    image: app/redis
+    container_name: app.redis
+    ports:
+      - 6379:6379
+
+  swagger_ui:
+    environment:
+      - SWAGGER_JSON=./assets/docs/users-api.yml
+      - API_URL=https://site.org/docs/users-api.yml
+    image: swaggerapi/swagger-ui
+    container_name: app.swagger
+    volumes:
+      - "./assets/docs/users-api.yml:/usr/share/nginx/html/users-api.yml"
+    ports:
+      - 8080:8080
