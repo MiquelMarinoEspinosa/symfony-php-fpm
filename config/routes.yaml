@@ -1,5 +1,5 @@
 controllers:
-  resource: ../src/Controller/
+  resource: ../src/UserInterface/Controller/
   type: annotation
 
 kernel:
@@ -8,4 +8,4 @@ kernel:
 
 app_lucky_number:
   path: /lucky/number
-  controller: App\Controller\LuckyController::number
+  controller: App\UserInterface\Controller\LuckyController::number
