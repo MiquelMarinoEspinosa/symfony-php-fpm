@@ -11,17 +11,17 @@ use App\Domain\Repository\UserRepository;
 final class CreateUserHandler
 {
     public function __construct(
-    private UuidGenerator $uuidGenerator,
-    private UserRepository $userRepository
-  ) {
+        private UuidGenerator $uuidGenerator,
+        private UserRepository $userRepository
+    ) {
     }
 
     public function __invoke(CreateUserCommand $command): void
     {
         $user = new User(
-          $this->uuidGenerator->generate(),
-          $command->name,
-          $command->password
+            $this->uuidGenerator->generate(),
+            $command->name,
+            $command->password
         );
 
         $this->userRepository->persist($user);

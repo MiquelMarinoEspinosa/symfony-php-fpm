@@ -9,10 +9,10 @@ use App\Shared\Domain\Uuid;
 final class User
 {
     public function __construct(
-      private Uuid $id,
-      private string $name,
-      private string $password
-  ) {
+        private Uuid $id,
+        private string $name,
+        private string $password
+    ) {
     }
 
     public function id(): string

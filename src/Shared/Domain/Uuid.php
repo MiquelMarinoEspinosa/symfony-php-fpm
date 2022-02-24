@@ -7,7 +7,7 @@ namespace App\Shared\Domain;
 final class Uuid
 {
     public function __construct(
-      public readonly string $value
+        public readonly string $value
     ) {
     }
 }

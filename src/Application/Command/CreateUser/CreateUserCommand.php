@@ -7,8 +7,8 @@ namespace App\Application\Command\CreateUser;
 final class CreateUserCommand
 {
     public function __construct(
-      public readonly string $name,
-      public readonly string $password
-   ) {
+        public readonly string $name,
+        public readonly string $password
+    ) {
     }
 }
