@@ -1,3 +1,5 @@
+.PHONY: coverage
+
 up: 
 	docker-compose up
 
@@ -16,3 +18,6 @@ unit:
 fix:
 	docker exec -i -t app.php-fpm vendor/bin/php-cs-fixer fix src
 	docker exec -i -t app.php-fpm vendor/bin/php-cs-fixer fix tests
+
+coverage:
+	docker exec -i -t app.php-fpm bin/phpunit --coverage-html coverage
