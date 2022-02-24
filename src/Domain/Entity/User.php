@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\Entity;
+
+use App\Shared\Domain\Uuid;
 
 final class User
 {
     public function __construct(
-      private string $id,
+      private Uuid $id,
       private string $name,
       private string $password
   ) {
@@ -13,7 +17,7 @@ final class User
 
     public function id(): string
     {
-        return $this->id;
+        return $this->id->value;
     }
 
     public function name(): string

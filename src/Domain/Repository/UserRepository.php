@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\Repository;
 
 use App\Domain\Entity\User;
 
-interface UserRepository 
+interface UserRepository
 {
-  public function persist(User $user);
+    public function persist(User $user);
 }

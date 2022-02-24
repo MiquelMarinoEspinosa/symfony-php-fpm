@@ -26,6 +26,9 @@
     "doctrine/lexer": {
         "version": "1.2.2"
     },
+    "fakerphp/faker": {
+        "version": "v1.19.0"
+    },
     "friendsofphp/php-cs-fixer": {
         "version": "3.6",
         "recipe": {

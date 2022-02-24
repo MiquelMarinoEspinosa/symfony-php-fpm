@@ -9,3 +9,10 @@ bash:
 
 cache-clear:
 	docker exec -i -t  app.php-fpm bin/console cache:clear
+
+unit:
+	docker exec -i -t app.php-fpm bin/phpunit
+
+fix:
+	docker exec -i -t app.php-fpm vendor/bin/php-cs-fixer fix src
+	docker exec -i -t app.php-fpm vendor/bin/php-cs-fixer fix tests
