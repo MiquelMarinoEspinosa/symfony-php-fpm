@@ -21,3 +21,6 @@ fix:
 
 coverage:
 	docker exec -i -t app.php-fpm bin/phpunit --coverage-html coverage
+
+mysql:
+	mysql -h 127.0.0.1 -P 3306 -u root -ptoor
