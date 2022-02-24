@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Domain;
 
-interface UuidGenerator
+interface IdGenerator
 {
-    public function generate(): Uuid;
+    public function generate(): Id;
 }

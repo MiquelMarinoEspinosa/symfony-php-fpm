@@ -8,8 +8,8 @@ use App\Application\Command\CreateUser\CreateUserCommand;
 use App\Application\Command\CreateUser\CreateUserHandler;
 use App\Domain\Entity\User;
 use App\Domain\Repository\UserRepository;
-use App\Shared\Domain\Uuid;
-use App\Shared\Domain\UuidGenerator;
+use App\Shared\Domain\Id;
+use App\Shared\Domain\IdGenerator;
 use Faker\Factory;
 use Faker\Generator;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 final class CreateUserHandlerTest extends TestCase
 {
     private UserRepository|MockObject $userRepository;
-    private UuidGenerator|MockObject $uuidGenerator;
+    private IdGenerator|MockObject $idGenerator;
     private Generator $faker;
     private CreateUserHandler $handler;
 
@@ -27,10 +27,10 @@ final class CreateUserHandlerTest extends TestCase
         parent::setUp();
 
         $this->userRepository = $this->createMock(UserRepository::class);
-        $this->uuidGenerator = $this->createMock(UuidGenerator::class);
+        $this->idGenerator = $this->createMock(IdGenerator::class);
         $this->faker = Factory::create();
         $this->handler = new CreateUserHandler(
-            $this->uuidGenerator,
+            $this->idGenerator,
             $this->userRepository
         );
     }
@@ -42,10 +42,10 @@ final class CreateUserHandlerTest extends TestCase
     {
         $this->expectException(\Exception::class);
 
-        $this->uuidGenerator
+        $this->idGenerator
             ->expects(self::once())
             ->method('generate')
-            ->willReturn(new Uuid($this->faker->uuid()));
+            ->willReturn(new Id($this->faker->uuid()));
 
         $this->userRepository
             ->expects(self::once())
@@ -69,8 +69,8 @@ final class CreateUserHandlerTest extends TestCase
             $this->faker->name(),
             $this->faker->md5()
         );
-        $userId = new Uuid($this->faker->uuid());
-        $this->uuidGenerator
+        $userId = new Id($this->faker->uuid());
+        $this->idGenerator
             ->expects(self::once())
             ->method('generate')
             ->willReturn($userId);

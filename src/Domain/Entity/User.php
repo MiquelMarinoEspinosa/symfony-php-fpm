@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Domain\Entity;
 
-use App\Shared\Domain\Uuid;
+use App\Shared\Domain\Id;
 
 final class User
 {
     public function __construct(
-        private Uuid $id,
+        private Id $id,
         private string $name,
         private string $password
     ) {

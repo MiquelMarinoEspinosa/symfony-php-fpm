@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Application\Command\CreateUser;
 
 use App\Domain\Entity\User;
-use App\Shared\Domain\UuidGenerator;
+use App\Shared\Domain\IdGenerator;
 use App\Domain\Repository\UserRepository;
 
 final class CreateUserHandler
 {
     public function __construct(
-        private UuidGenerator $uuidGenerator,
+        private IdGenerator $idGenerator,
         private UserRepository $userRepository
     ) {
     }
@@ -19,7 +19,7 @@ final class CreateUserHandler
     public function __invoke(CreateUserCommand $command): void
     {
         $user = new User(
-            $this->uuidGenerator->generate(),
+            $this->idGenerator->generate(),
             $command->name,
             $command->password
         );
