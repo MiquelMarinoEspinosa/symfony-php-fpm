@@ -8,5 +8,5 @@ use App\Domain\Entity\User;
 
 interface UserRepository
 {
-    public function persist(User $user);
+    public function persist(User $user): void;
 }

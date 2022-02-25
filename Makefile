@@ -26,10 +26,12 @@ bash-mysql:
 	mysql -h 127.0.0.1 -P 3306 -u root -ptoor
 
 db:
+	docker exec -i -t app.php-fpm bin/console doctrine:database:drop --force --if-exists
 	docker exec -i -t app.php-fpm bin/console doctrine:cache:clear-query --flush
 	docker exec -i -t app.php-fpm bin/console doctrine:cache:clear-metadata --flush
 	docker exec -i -t app.php-fpm bin/console doctrine:cache:clear-result --flush
 	docker exec -i -t app.php-fpm bin/console doctrine:database:create
-
-schema:
-	docker exec -i -t app.php-fpm bin/console doctrine:schema:create	
+	docker exec -i -t app.php-fpm bin/console doctrine:schema:create
+	docker exec -i -t app.php-fpm bin/console doctrine:cache:clear-query --flush
+	docker exec -i -t app.php-fpm bin/console doctrine:cache:clear-metadata --flush
+	docker exec -i -t app.php-fpm bin/console doctrine:cache:clear-result --flush
