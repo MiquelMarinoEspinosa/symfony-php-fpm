@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Command\CreateUser;
+namespace App\User\Application\Command\CreateUser;
 
 final class CreateUserCommand
 {

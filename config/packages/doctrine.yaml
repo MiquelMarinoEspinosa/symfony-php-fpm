@@ -12,9 +12,9 @@ doctrine:
     auto_mapping: false
     mappings:
       User:
-        prefix: 'App\Domain\Entity'
+        prefix: 'App\User\Domain\Entity'
         type: xml
-        dir: "%kernel.project_dir%/src/Infrastructure/Resources/config/doctrine"
+        dir: "%kernel.project_dir%/src/User/Infrastructure/Resources/config/doctrine"
         is_bundle: false
 
 when@test:

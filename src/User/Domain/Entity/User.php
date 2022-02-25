@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Entity;
+namespace App\User\Domain\Entity;
 
-use App\Shared\Domain\Id;
+use App\Shared\Domain\Id\Id;
 
 final class User
 {
@@ -15,9 +15,9 @@ final class User
     ) {
     }
 
-    public function id(): string
+    public function id(): Id
     {
-        return $this->id->value;
+        return $this->id;
     }
 
     public function name(): string

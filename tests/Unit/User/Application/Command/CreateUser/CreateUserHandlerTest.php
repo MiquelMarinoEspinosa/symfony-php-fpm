@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Application\Command\CreateUser;
+namespace App\User\Tests\Unit\Application\Command\CreateUser;
 
-use App\Application\Command\CreateUser\CreateUserCommand;
-use App\Application\Command\CreateUser\CreateUserHandler;
-use App\Domain\Entity\User;
-use App\Domain\Repository\UserRepository;
-use App\Shared\Domain\Id;
-use App\Shared\Domain\IdGenerator;
+use App\Shared\Domain\Id\Id;
+use App\Shared\Domain\Id\IdGenerator;
+use App\User\Application\Command\CreateUser\CreateUserCommand;
+use App\User\Application\Command\CreateUser\CreateUserHandler;
+use App\User\Domain\Entity\User;
+use App\User\Domain\Repository\UserRepository;
 use Faker\Factory;
 use Faker\Generator;
 use PHPUnit\Framework\MockObject\MockObject;

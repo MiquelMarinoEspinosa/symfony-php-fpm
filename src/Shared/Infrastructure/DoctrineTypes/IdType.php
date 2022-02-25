@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Shared\Infrastructure\DoctrineTypes;
 
-use App\Shared\Domain\Id;
-use Doctrine\DBAL\Types\StringType;
+use App\Shared\Domain\Id\Id;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\StringType;
 
 class IdType extends StringType
 {
@@ -27,6 +27,6 @@ class IdType extends StringType
 
     protected function getNamespace(): string
     {
-        return 'App\Shared\Domain';
+        return 'App\Shared\Domain\Id';
     }
 }

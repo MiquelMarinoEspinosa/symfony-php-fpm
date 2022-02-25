@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Command\CreateUser;
+namespace App\User\Application\Command\CreateUser;
 
-use App\Domain\Entity\User;
-use App\Shared\Domain\IdGenerator;
-use App\Domain\Repository\UserRepository;
+use App\Shared\Domain\Id\IdGenerator;
+use App\User\Domain\Entity\User;
+use App\User\Domain\Repository\UserRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]

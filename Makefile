@@ -7,15 +7,15 @@ down:
 	docker-compose down
 
 bash:
-	docker exec -i -t  app.php-fpm sh
+	docker exec -i -t app.php-fpm sh
 
-cache-clear:
-	docker exec -i -t  app.php-fpm bin/console cache:clear
+clear-cache:
+	docker exec -i -t app.php-fpm bin/console cache:clear
 
 unit:
 	docker exec -i -t app.php-fpm bin/phpunit
 
-fix:
+cs-fixer:
 	docker exec -i -t app.php-fpm vendor/bin/php-cs-fixer fix src
 	docker exec -i -t app.php-fpm vendor/bin/php-cs-fixer fix tests
 
