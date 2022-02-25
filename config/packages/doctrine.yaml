@@ -14,7 +14,7 @@ doctrine:
       User:
         prefix: 'App\Domain\Entity'
         type: xml
-        dir: "%kernel.project_dir%/src/Infrastructure/resources/mapping"
+        dir: "%kernel.project_dir%/src/Infrastructure/Resources/config/doctrine"
         is_bundle: false
 
 when@test:

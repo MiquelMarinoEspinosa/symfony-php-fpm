@@ -7,7 +7,9 @@ namespace App\Application\Command\CreateUser;
 use App\Domain\Entity\User;
 use App\Shared\Domain\IdGenerator;
 use App\Domain\Repository\UserRepository;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
+#[AsMessageHandler]
 final class CreateUserHandler
 {
     public function __construct(
