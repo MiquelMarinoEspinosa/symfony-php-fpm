@@ -11,8 +11,9 @@ down:
 bash:
 	$(SH_PHP) sh
 
+ENV=dev
 clear-cache:
-	$(SH_PHP) bin/console cache:clear
+	$(SH_PHP) bin/console cache:clear --env=$(ENV)
 
 unit:
 	$(SH_PHP) bin/phpunit
@@ -24,7 +25,7 @@ cs-fixer:
 coverage:
 	$(SH_PHP) bin/phpunit --coverage-html coverage
 
-bash-mysql:
+mysql:
 	mysql -h 127.0.0.1 -P 3306 -u root -ptoor
 
 db:
@@ -40,3 +41,6 @@ db:
 
 install:
 	$(SH_PHP) composer install
+
+acceptance:
+	$(SH_PHP) vendor/bin/behat --config config/packages/test/behat.yml

@@ -1,0 +1,10 @@
+default:
+  suites:
+    default:
+      paths:
+        - "../../../tests/Acceptance/User/features"
+      contexts:
+        - App\Tests\Acceptance\User\UserContext
+
+  extensions:
+    FriendsOfBehat\SymfonyExtension: null

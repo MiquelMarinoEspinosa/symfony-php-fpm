@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\User\UserInterface\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
