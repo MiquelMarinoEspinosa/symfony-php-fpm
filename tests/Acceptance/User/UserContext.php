@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Acceptance\User;
 
 use Behat\Behat\Context\Context;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\KernelInterface;
+use Behat\Gherkin\Node\TableNode;
 
 /**
  * This context class contains the definitions of the steps used by the demo
@@ -17,32 +15,56 @@ use Symfony\Component\HttpKernel\KernelInterface;
  */
 final class UserContext implements Context
 {
-    /** @var KernelInterface */
-    private $kernel;
+    private array $credentials;
+    private string|bool $response;
+    private string $error;
+    private int $httpCode;
 
-    /** @var Response|null */
-    private $response;
-
-    public function __construct(KernelInterface $kernel)
+    /**
+     * @Given the user credentials
+     */
+    public function userCredentials(TableNode $table): void
     {
-        $this->kernel = $kernel;
+        $this->credentials = $table->getColumnsHash()[0];
     }
 
     /**
-     * @When a demo scenario sends a request to :path
+     * @When make the create user request
      */
-    public function aDemoScenarioSendsARequestTo(string $path): void
+    public function makeCreateUser(): void
     {
-        $this->response = $this->kernel->handle(Request::create($path, 'GET'));
+        $ch = curl_init();
+        $data = [
+            'name' => $this->credentials['name'],
+            'password' => $this->credentials['password'],
+        ];
+        curl_setopt($ch, CURLOPT_URL, 'http://app.nginx/users');
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt(
+            $ch,
+            CURLOPT_POSTFIELDS,
+            json_encode($data)
+        );
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json'
+        ]);
+        $this->response = curl_exec($ch);
+        $this->error = curl_error($ch);
+        $this->httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
     }
 
     /**
-     * @Then the response should be received
+     * @Then the user should be created
      */
-    public function theResponseShouldBeReceived(): void
+    public function theUserHasBeenCreated(): void
     {
-        if ($this->response === null) {
-            throw new \RuntimeException('No response received');
+        if (false === $this->response || $this->httpCode !== 201) {
+            $message = $this->error ?: $this->response;
+            throw new \RuntimeException($message);
         }
     }
 }
