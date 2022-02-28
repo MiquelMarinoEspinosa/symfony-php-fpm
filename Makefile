@@ -8,12 +8,14 @@ up:
 down:
 	docker-compose down
 
+build: install clear-cache db
+
 bash:
 	$(SH_PHP) sh
 
-ENV=dev
 clear-cache:
-	$(SH_PHP) bin/console cache:clear --env=$(ENV)
+	$(SH_PHP) bin/console cache:clear
+	$(SH_PHP) bin/console cache:clear --env=test
 
 unit:
 	$(SH_PHP) bin/phpunit
