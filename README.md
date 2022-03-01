@@ -13,6 +13,7 @@ Using docker to configure the devel environment
 ### tests
 * make unit
 * make acceptance
+* make coverage
 
 ### swagger
 * http://localhost:8080
