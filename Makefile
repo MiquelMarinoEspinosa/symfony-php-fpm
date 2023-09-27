@@ -18,14 +18,14 @@ clear-cache:
 	$(SH_PHP) bin/console cache:clear --env=test
 
 unit:
-	$(SH_PHP) bin/phpunit
+	$(SH_PHP) vendor/bin/phpunit --testsuite Unit
 
 cs-fixer:
 	$(SH_PHP) vendor/bin/php-cs-fixer fix src
 	$(SH_PHP) vendor/bin/php-cs-fixer fix tests
 
 coverage:
-	$(SH_PHP) bin/phpunit --coverage-html coverage
+	$(SH_PHP) vendor/bin/phpunit --testsuite Unit --coverage-html coverage
 
 db-client:
 	mysql -h 127.0.0.1 -P 3306 -u root -ptoor
