@@ -1,0 +1,7 @@
+DROP USER IF EXISTS 'user';
+CREATE USER 'user'@'%';
+CREATE DATABASE IF NOT EXISTS app;
+GRANT ALL ON app.* TO 'user'@'%' IDENTIFIED BY 'user';
+
+CREATE DATABASE IF NOT EXISTS app_test;
+GRANT ALL ON app_test.* TO 'user'@'%' IDENTIFIED BY 'user';

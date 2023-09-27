@@ -27,7 +27,7 @@ cs-fixer:
 coverage:
 	$(SH_PHP) bin/phpunit --coverage-html coverage
 
-mysql:
+db-client:
 	mysql -h 127.0.0.1 -P 3306 -u root -ptoor
 
 db:
@@ -44,5 +44,5 @@ db:
 install:
 	$(SH_PHP) composer install
 
-acceptance:
+behat:
 	$(SH_PHP) vendor/bin/behat --config config/packages/test/behat.yml
