@@ -19,25 +19,23 @@
 
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>tests</directory>
+            <directory>src/*/Tests</directory>
         </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">
         <include>
-          <directory suffix=".php">src/User/Domain</directory>
-          <directory suffix=".php">src/User/Application</directory>
+            <directory suffix=".php">src</directory>
         </include>
+        <exclude>
+            <directory suffix=".php">src/*/Tests</directory>
+        </exclude>
     </coverage>
 
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
     </listeners>
 
-    <!-- Run `composer require symfony/panther` before enabling this extension -->
-    <!--
     <extensions>
-        <extension class="Symfony\Component\Panther\ServerExtension" />
     </extensions>
-    -->
 </phpunit>
