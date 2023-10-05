@@ -8,6 +8,6 @@ Feature:
     Scenario: It creates an user with its credentials
         Given the user credentials
             | name   | password |
-            | miquel | test     |
+            | behat  | behat    |
         When make the create user request
         Then the user should be created

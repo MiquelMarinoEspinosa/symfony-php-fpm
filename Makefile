@@ -20,6 +20,9 @@ clear-cache:
 unit:
 	$(SH_PHP) vendor/bin/phpunit --testsuite Unit
 
+acceptance:
+	$(SH_PHP) vendor/bin/phpunit --testsuite Acceptance
+
 cs-fixer:
 	$(SH_PHP) vendor/bin/php-cs-fixer fix src
 	$(SH_PHP) vendor/bin/php-cs-fixer fix tests
@@ -40,6 +43,17 @@ db:
 	$(SH_PHP) bin/console doctrine:cache:clear-query --flush
 	$(SH_PHP) bin/console doctrine:cache:clear-metadata --flush
 	$(SH_PHP) bin/console doctrine:cache:clear-result --flush
+
+db-test:
+	$(SH_PHP) bin/console doctrine:database:drop --force --if-exists --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-query --flush --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-metadata --flush --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-result --flush --env=test
+	$(SH_PHP) bin/console doctrine:database:create --env=test
+	$(SH_PHP) bin/console doctrine:schema:create --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-query --flush --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-metadata --flush --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-result --flush --env=test
 
 install:
 	$(SH_PHP) composer install

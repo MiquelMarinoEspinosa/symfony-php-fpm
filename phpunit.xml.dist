@@ -5,18 +5,11 @@
          colors="true"
 >
     <testsuites>
-        <testsuite name="Laravel">
-            <directory>tests/Unit</directory>
-            <directory>tests/Feature</directory>
-        </testsuite>
         <testsuite name="Unit">
             <directory>src/*/Tests/Unit</directory>
         </testsuite>
-        <testsuite name="Integration">
-            <directory>src/*/Tests/Integration</directory>
-        </testsuite>
         <testsuite name="Acceptance">
-            <directory>src/*/Tests/Acceptance/PhpUnit</directory>
+            <directory>tests/Acceptance/*/PhpUnit</directory>
         </testsuite>
     </testsuites>
 
@@ -34,9 +27,11 @@
         <env name="CACHE_DRIVER" value="array"/>
         <!-- <env name="DB_CONNECTION" value="sqlite"/> -->
         <!-- <env name="DB_DATABASE" value=":memory:"/> -->
+        <env name="DATABASE_URL" value="mysql://user:user@app.mariadb:3306/app?serverVersion=8.0"/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <server name="KERNEL_CLASS" value="App\Kernel" />
     </php>
 </phpunit>

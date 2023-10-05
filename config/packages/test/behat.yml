@@ -2,9 +2,9 @@ default:
   suites:
     default:
       paths:
-        - "../../../tests/Acceptance/User/features"
+        - "../../../tests/Acceptance/User/Behat/features"
       contexts:
-        - App\Tests\Acceptance\User\UserContext
+        - App\Tests\Acceptance\User\Behat\UserContext
 
   extensions:
     FriendsOfBehat\SymfonyExtension: null
