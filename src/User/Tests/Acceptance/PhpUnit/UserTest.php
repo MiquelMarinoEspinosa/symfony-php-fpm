@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Acceptance\User\PhpUnit;
+namespace App\User\Tests\Acceptance\PhpUnit;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

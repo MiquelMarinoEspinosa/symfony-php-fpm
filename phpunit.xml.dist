@@ -9,7 +9,7 @@
             <directory>src/*/Tests/Unit</directory>
         </testsuite>
         <testsuite name="Acceptance">
-            <directory>tests/Acceptance/*/PhpUnit</directory>
+            <directory>src/*/Tests/Acceptance/PhpUnit</directory>
         </testsuite>
     </testsuites>
 
