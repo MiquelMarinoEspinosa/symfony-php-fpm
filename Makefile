@@ -39,25 +39,25 @@ db-client:
 
 db:
 	$(SH_PHP) bin/console doctrine:database:drop --force --if-exists
-	$(SH_PHP) bin/console doctrine:cache:clear-query --flush
-	$(SH_PHP) bin/console doctrine:cache:clear-metadata --flush
-	$(SH_PHP) bin/console doctrine:cache:clear-result --flush
+	$(SH_PHP) bin/console doctrine:cache:clear-query
+	$(SH_PHP) bin/console doctrine:cache:clear-metadata
+	$(SH_PHP) bin/console doctrine:cache:clear-result
 	$(SH_PHP) bin/console doctrine:database:create
 	$(SH_PHP) bin/console doctrine:schema:create
-	$(SH_PHP) bin/console doctrine:cache:clear-query --flush
-	$(SH_PHP) bin/console doctrine:cache:clear-metadata --flush
-	$(SH_PHP) bin/console doctrine:cache:clear-result --flush
+	$(SH_PHP) bin/console doctrine:cache:clear-query
+	$(SH_PHP) bin/console doctrine:cache:clear-metadata
+	$(SH_PHP) bin/console doctrine:cache:clear-result
 
 db-test:
 	$(SH_PHP) bin/console doctrine:database:drop --force --if-exists --env=test
-	$(SH_PHP) bin/console doctrine:cache:clear-query --flush --env=test
-	$(SH_PHP) bin/console doctrine:cache:clear-metadata --flush --env=test
-	$(SH_PHP) bin/console doctrine:cache:clear-result --flush --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-query --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-metadata --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-result --env=test
 	$(SH_PHP) bin/console doctrine:database:create --env=test
 	$(SH_PHP) bin/console doctrine:schema:create --env=test
-	$(SH_PHP) bin/console doctrine:cache:clear-query --flush --env=test
-	$(SH_PHP) bin/console doctrine:cache:clear-metadata --flush --env=test
-	$(SH_PHP) bin/console doctrine:cache:clear-result --flush --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-query --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-metadata --env=test
+	$(SH_PHP) bin/console doctrine:cache:clear-result --env=test
 
 install:
 	$(SH_PHP) composer install
