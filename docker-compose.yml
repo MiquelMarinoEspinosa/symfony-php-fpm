@@ -6,6 +6,8 @@ services:
     container_name: app.php-fpm
     volumes:
       - ".:/app"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     
   nginx:
     build:
