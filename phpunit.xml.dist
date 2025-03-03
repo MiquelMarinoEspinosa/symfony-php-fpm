@@ -27,7 +27,7 @@
         <env name="CACHE_DRIVER" value="array"/>
         <!-- <env name="DB_CONNECTION" value="sqlite"/> -->
         <!-- <env name="DB_DATABASE" value=":memory:"/> -->
-        <env name="DATABASE_URL" value="mysql://user:user@app.mariadb:3306/app?serverVersion=8.0"/>
+        <env name="DATABASE_URL" value="mysql://root:toor@app.mariadb:3306/app?serverVersion=11.7.2-MariaDB-ubu2404"/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>

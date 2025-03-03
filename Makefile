@@ -64,3 +64,5 @@ install:
 
 behat:
 	$(SH_PHP) vendor/bin/behat --config config/packages/test/behat.yml
+
+make tests: unit acceptance behat

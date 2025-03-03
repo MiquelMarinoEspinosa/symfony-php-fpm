@@ -17,3 +17,8 @@ Using docker to configure the devel environment
 
 ### swagger
 * http://localhost:8080
+
+### configuration
+* create `.env` and `.env.test`
+* add to `.env` file the following line
+    * `mysql://root:toor@app.mariadb:3306/app?serverVersion=11.7.2-MariaDB-ubu2404&charset=utf8`
