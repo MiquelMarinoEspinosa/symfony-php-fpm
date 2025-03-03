@@ -35,10 +35,7 @@ final class CreateUserHandlerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function shouldThrownAnExceptionWhenUserRepositoryFails(): void
+    public function testShouldThrownAnExceptionWhenUserRepositoryFails(): void
     {
         $this->expectException(\Exception::class);
 
@@ -60,10 +57,7 @@ final class CreateUserHandlerTest extends TestCase
         $this->handler->__invoke($command);
     }
 
-    /**
-     * @test
-     */
-    public function shouldCreateTheUser(): void
+    public function testShouldCreateTheUser(): void
     {
         $command = new CreateUserCommand(
             $this->faker->name(),

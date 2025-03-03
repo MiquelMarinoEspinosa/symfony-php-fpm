@@ -1,14 +1,18 @@
 .PHONY: coverage
 
-SH_PHP=docker exec -i -t app.php-fpm
+SH_PHP=docker compose exec -i -t php-fpm
+
+build:
+	docker compose build
 
 up: 
-	docker-compose up
+	docker compose up
 
 down:
-	docker-compose down
+	docker compose down
+	docker compose rm
 
-build: install clear-cache db
+config: install clear-cache db
 
 bash:
 	$(SH_PHP) sh
